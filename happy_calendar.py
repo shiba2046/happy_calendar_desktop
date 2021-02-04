@@ -46,3 +46,4 @@ def getCalendar():
 
 if __name__ == '__main__':
   getCalendar()
+  import bgChanger3
