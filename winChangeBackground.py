@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import os, sys
+from pathlib import Path
+import wsl
 
 # Function to actually set the wallpaper as tiled image
 # > We will set background as a single image (which is 2 images merged)
@@ -25,10 +27,15 @@ if __name__ == '__main__':
     # Only import when in Windows
     
     import win32api, win32con, win32gui
-    path = args[1]
-    if os.path.exists(path):
-      setWallpaper(args[1])
+    if args[1] == '/':
+      # WSL path
+      path = wsl.wslToWinPath(args[1])
     else:
+      path = Path(args[1])
+
+    if path.is_file():
+      setWallpaper(args[1])
+    
       raise RuntimeError(f'File {path} does not exist')
   else:
     raise RuntimeError('Cannot run in non-Windows Enviroment')

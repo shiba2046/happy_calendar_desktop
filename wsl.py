@@ -12,6 +12,13 @@ from pathlib import Path
 
 
 # TODO: Wrap things in a class?
+def wslToWinPath(path):
+  # WSL path
+  try:
+    p = subprocess.run(['wsl', 'wslpath', '-w', path])
+    return Path(p.stdout.decode().strip())
+  except:
+    pass
 
 if os.name == 'nt':
   USERPROFILE = Path(os.getenv('USERPROFILE').strip())

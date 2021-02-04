@@ -29,8 +29,7 @@ dir2 = []
 
 
 root_path = wsl.USERPROFILE / 'Pictures/desktop-background'
-win_path = wsl.USERPROFILE_win / 'Pictures/desktop-background'
- 
+
 def getImages():
 	global dir1
 	global dir2
@@ -101,4 +100,4 @@ mergeIMG(img1, img2)
 # Finally we'll set the wallpaper as tiled image
 
 # Run the change background script in Windows enviroment
-run(["python.exe", "winChangeBackground.py", win_path / 'final.jpg'])
+run(["python.exe", "winChangeBackground.py", root_path / 'final.jpg'])
