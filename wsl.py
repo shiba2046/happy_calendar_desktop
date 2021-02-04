@@ -1,4 +1,27 @@
+#!/usr/bin/env python3
+'''
+wsl.py
+A wrapper to provide a common interface for both Windows and WSL enviroment
+Written by: Chiba2046
+Last modifed: 04 Jan 2021
+
+'''
 import os
-from subprocess import call
+import subprocess
+from pathlib import Path
 
 
+# TODO: Wrap things in a class?
+
+if os.name == 'nt':
+  USERPROFILE = Path(os.getenv('USERPROFILE').strip())
+  USERPROFILE_win = USERPROFILE
+else:
+  try:
+    _user_profile = subprocess.run(['wslvar', 'USERPROFILE'], capture_output=True)
+    _result = subprocess.run(['wslpath', _user_profile.stdout.decode()], capture_output=True)
+    USERPROFILE = Path(_result.stdout.decode().strip())
+    USERPROFILE_win = Path(_user_profile.stdout.decode().strip())
+
+  except:
+    pass
