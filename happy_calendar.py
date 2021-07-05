@@ -10,8 +10,10 @@ import requests
 from bs4 import BeautifulSoup
 from PIL import Image
 import wsl
+import os, sys
+from pathlib import Path
 
-calendar_jpg = wsl.USERPROFILE / 'Pictures/desktop-background/happiness_calender.jpg'
+calendar_jpg = wsl.USERPROFILE / 'Pictures/desktop-background/right/happiness_calender.jpg'
 
 def getURL(href):
   return requests.compat.urljoin('https://www.actionforhappiness.org', href)
@@ -47,3 +49,18 @@ def getCalendar():
 if __name__ == '__main__':
   getCalendar()
   import bgChanger3
+
+  # from winChangeBackground import setWallpaper
+  
+  # if os.name == 'nt':
+  #   # Only import when in Windows
+    
+  #   import win32api, win32con, win32gui
+  #   path = Path(r'C:\Users\peng.f\Pictures\desktop-background\final.jpg')
+
+  #   if path.is_file():
+  #     setWallpaper(path)
+    
+  #     raise RuntimeError(f'File {path} does not exist')
+  # else:
+  #   raise RuntimeError('Cannot run in non-Windows Enviroment')

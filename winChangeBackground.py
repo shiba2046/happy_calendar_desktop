@@ -34,8 +34,8 @@ if __name__ == '__main__':
       path = Path(args[1])
 
     if path.is_file():
-      setWallpaper(args[1])
+      setWallpaper(path.as_posix())
     
-      raise RuntimeError(f'File {path} does not exist')
+      # raise RuntimeError(f'File {path} does not exist')
   else:
     raise RuntimeError('Cannot run in non-Windows Enviroment')

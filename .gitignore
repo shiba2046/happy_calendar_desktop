@@ -5,3 +5,4 @@ __pycache__/
 *.jpg
 exclude.py
 .git*
+venv/

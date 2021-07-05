@@ -16,7 +16,7 @@ import sys
 import glob
 import time
 import random
-from PIL import Image
+from PIL import Image 
 #import win32api, win32con, win32gui
 from subprocess import run
 import wsl
@@ -100,4 +100,4 @@ mergeIMG(img1, img2)
 # Finally we'll set the wallpaper as tiled image
 
 # Run the change background script in Windows enviroment
-run(["python.exe", "winChangeBackground.py", root_path / 'final.jpg'])
+run(["python.exe", "./winChangeBackground.py", root_path / 'final.jpg'])
